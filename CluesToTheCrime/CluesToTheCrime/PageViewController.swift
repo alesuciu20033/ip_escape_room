@@ -21,19 +21,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.dataSource = self
         self.delegate = self
         
-        // Create static content pages
-        let page1 = UIViewController()
-        page1.view.backgroundColor = .red
-        
-        let page2 = UIViewController()
-        page2.view.backgroundColor = .green
-        
-        let page3 = UIViewController()
-        page3.view.backgroundColor = .blue
-        
-        // Add the pages to the array
-        pages = [page1, page2, page3]
-        
         // Set the initial page to be displayed
         let initialPage = 0
         setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)

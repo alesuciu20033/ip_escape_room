@@ -13,6 +13,7 @@
 		22E0764E2C21A3150060BC05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E0764D2C21A3150060BC05 /* Preview Assets.xcassets */; };
 		22E076572C21C4D10060BC05 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076562C21C4D00060BC05 /* PageViewController.swift */; };
 		22E0765B2C21C8DD0060BC05 /* PageViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */; };
+		22E0765D2C2208770060BC05 /* PageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0765C2C2208770060BC05 /* PageViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		22E0764D2C21A3150060BC05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22E076562C21C4D00060BC05 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerWrapper.swift; sourceTree = "<group>"; };
+		22E0765C2C2208770060BC05 /* PageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				22E076462C21A3130060BC05 /* CluesToTheCrimeApp.swift */,
 				22E076482C21A3130060BC05 /* ContentView.swift */,
+				22E0765C2C2208770060BC05 /* PageViews.swift */,
 				22E076562C21C4D00060BC05 /* PageViewController.swift */,
 				22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */,
 				22E0764A2C21A3150060BC05 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				22E076492C21A3130060BC05 /* ContentView.swift in Sources */,
 				22E0765B2C21C8DD0060BC05 /* PageViewControllerWrapper.swift in Sources */,
 				22E076472C21A3130060BC05 /* CluesToTheCrimeApp.swift in Sources */,
+				22E0765D2C2208770060BC05 /* PageViews.swift in Sources */,
 				22E076572C21C4D10060BC05 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
