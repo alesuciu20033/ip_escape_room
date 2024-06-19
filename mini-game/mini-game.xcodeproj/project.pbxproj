@@ -7,18 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B253A28C2C22FED800E1FDE9 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */; };
 		B2ED6F6C2C21CA1700AE2DCB /* mini_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */; };
-		B2ED6F6E2C21CA1700AE2DCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ED6F6D2C21CA1700AE2DCB /* ContentView.swift */; };
-		B2ED6F702C21CA1900AE2DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2ED6F6F2C21CA1900AE2DCB /* Assets.xcassets */; };
-		B2ED6F732C21CA1900AE2DCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2ED6F722C21CA1900AE2DCB /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		B2ED6F682C21CA1700AE2DCB /* mini-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_gameApp.swift; sourceTree = "<group>"; };
-		B2ED6F6D2C21CA1700AE2DCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B2ED6F6F2C21CA1900AE2DCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B2ED6F722C21CA1900AE2DCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,19 +48,9 @@
 			isa = PBXGroup;
 			children = (
 				B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */,
-				B2ED6F6D2C21CA1700AE2DCB /* ContentView.swift */,
-				B2ED6F6F2C21CA1900AE2DCB /* Assets.xcassets */,
-				B2ED6F712C21CA1900AE2DCB /* Preview Content */,
+				B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */,
 			);
 			path = "mini-game";
-			sourceTree = "<group>";
-		};
-		B2ED6F712C21CA1900AE2DCB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B2ED6F722C21CA1900AE2DCB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +111,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2ED6F732C21CA1900AE2DCB /* Preview Assets.xcassets in Resources */,
-				B2ED6F702C21CA1900AE2DCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2ED6F6E2C21CA1700AE2DCB /* ContentView.swift in Sources */,
+				B253A28C2C22FED800E1FDE9 /* SwiftUIView.swift in Sources */,
 				B2ED6F6C2C21CA1700AE2DCB /* mini_gameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
