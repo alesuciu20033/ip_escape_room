@@ -1,12 +1,15 @@
 import SwiftUI
+import CoreMotion
 
 struct WordPuzzleView: View {
     @State private var words = ["Dia?y", "H?use", "K?nife", "Wa?ch", "Phon?", "Sc?een", "?utton"]
     @State private var correctLetters = ["r", "a", "n", "t", "e", "r", "b"]
-    @State private var currentWordIndex: Int?
-    @State private var userInput: String = ""
-    @State private var showKeyboard: Bool = false
-    @State private var isCorrect: Bool?
+    @State private var currentWordIndex: Int? = 0
+    @State private var selectedLetterIndex: Int = 0
+    @State private var showPicker: Bool = false
+    @State private var motionManager = CMMotionManager()
+    
+    let alphabet = Array("abcdefghijklmnopqrstuvwxyz")
     
     var body: some View {
         ZStack {
@@ -28,18 +31,17 @@ struct WordPuzzleView: View {
                     VStack {
                         ForEach(words.indices, id: \.self) { index in
                             HStack {
-                                formattedWord(words[index])
-                                    .font(.custom("American Typewriter", size: 36)) // Set larger font size here
-                                    .foregroundColor(.white)
-                                    .onTapGesture {
-                                        currentWordIndex = index
-                                        showKeyboard = true
-                                        isCorrect = nil // Reset correctness status
-                                    }
-                                if isCorrect == true && currentWordIndex == index {
-                                    Text("✔️")
-                                } else if isCorrect == false && currentWordIndex == index {
-                                    Text("❌")
+                                if index == currentWordIndex {
+                                    formattedWord(words[index])
+                                        .font(.custom("American Typewriter", size: 36))
+                                        .foregroundColor(.white)
+                                        .onTapGesture {
+                                            showPicker = true
+                                        }
+                                } else {
+                                    formattedWord(words[index])
+                                        .font(.custom("American Typewriter", size: 36))
+                                        .foregroundColor(.white)
                                 }
                             }
                             .padding(.vertical, 8)
@@ -53,32 +55,35 @@ struct WordPuzzleView: View {
                 
                 Spacer()
                 
-                if showKeyboard {
-                    HStack {
-                        TextField("Enter letter", text: $userInput)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .frame(width: 100)
-                        Button("Submit") {
-                            if let index = currentWordIndex {
-                                let correctLetter = correctLetters[index]
-                                if userInput.lowercased() == correctLetter {
-                                    var word = words[index]
-                                    if let range = word.range(of: "?") {
-                                        word.replaceSubrange(range, with: correctLetter.uppercased())
-                                        words[index] = word
-                                        isCorrect = true
-                                    }
-                                } else {
-                                    isCorrect = false
-                                }
+                if showPicker {
+                    VStack {
+                        Picker("Select Letter", selection: $selectedLetterIndex) {
+                            ForEach(0..<alphabet.count, id: \.self) { index in
+                                Text(String(alphabet[index]))
+                                    .foregroundColor(.black)
+                                    .font(.custom("American Typewriter", size: 24))
                             }
-                            userInput = ""
-                            showKeyboard = false
                         }
+                        .pickerStyle(WheelPickerStyle())
+                        .background(Color.white)
+                        .frame(height: 150)
+                        .clipped()
+                        .border(Color.white, width: 2)  
+                        .padding()
+                        
+                        Button("Done") {
+                            applySelectedLetter()
+                            moveToNextWord()
+                            showPicker = false
+                        }
+                        .foregroundColor(.white)
+                        .padding()
                     }
-                    .padding()
                 }
             }
+        }
+        .onAppear {
+            startShakeDetection()
         }
     }
     
@@ -94,6 +99,42 @@ struct WordPuzzleView: View {
         }
 
         return formatted
+    }
+    
+    func startShakeDetection() {
+        guard motionManager.isAccelerometerAvailable else { return }
+        
+        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.startAccelerometerUpdates(to: .main) { (data, error) in
+            guard let data = data else { return }
+            
+            let acceleration = data.acceleration
+            let magnitude = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
+            
+            if magnitude > 2.5 {
+                applySelectedLetter()
+                moveToNextWord()
+            }
+        }
+    }
+    
+    func applySelectedLetter() {
+        if let index = currentWordIndex {
+            let correctLetter = String(alphabet[selectedLetterIndex])
+            var word = words[index]
+            if let range = word.range(of: "?") {
+                word.replaceSubrange(range, with: correctLetter.uppercased())
+                words[index] = word
+            }
+        }
+    }
+    
+    func moveToNextWord() {
+        if let currentWordIndex = currentWordIndex, currentWordIndex < words.count - 1 {
+            self.currentWordIndex = currentWordIndex + 1
+        } else {
+            self.currentWordIndex = 0
+        }
     }
 }
 
