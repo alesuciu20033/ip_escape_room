@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct PageOneView: View {
     var body: some View {
         ZStack {
-            Color.black
+            Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
-            Text("Page One")
+           Text("Page One")
                 .font(.largeTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
         }
     }
 }
@@ -22,11 +23,11 @@ struct PageOneView: View {
 struct PageTwoView: View {
     var body: some View {
         ZStack {
-            Color.black
+            Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
             Text("Page Two")
                 .font(.largeTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
         }
     }
 }
@@ -34,11 +35,11 @@ struct PageTwoView: View {
 struct PageThreeView: View {
     var body: some View {
         ZStack {
-            Color.black
+            Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
             Text("Page Three")
                 .font(.largeTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
         }
     }
 }
@@ -46,11 +47,11 @@ struct PageThreeView: View {
 struct PageFourView: View {
     var body: some View {
         ZStack {
-            Color.black
+            Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
             Text("Page Four")
                 .font(.largeTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
         }
     }
 }
@@ -58,23 +59,29 @@ struct PageFourView: View {
 // The page which contains the note
 struct PageFiveNoteView: View {
     @State private var stage = 0
+    @StateObject private var hapticFeedbackManager = HapticFeedbackManager()
     
     var body: some View {
         ZStack {
-            Color.black
-                .ignoresSafeArea()
+                Color(red: 1.0, green: 0.98, blue: 0.94)
+                    .ignoresSafeArea()
             
             VStack {
                 if stage == 0 {
                     VStack(spacing: 50) {
                         Text("What is this?")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 50, design: .serif))
+                            .foregroundStyle(.black)
+                            .font(.system(size: 32, design: .serif))
                         
                         Image("folded-note")
                             .resizable()
-                            .frame(width: 550, height: 550)
-                    } .onTapGesture {
+                            .frame(width: 380, height: 380)
+                        
+                    }
+                    .onAppear {
+                        hapticFeedbackManager.playHapticFeedback()
+                    }
+                    .onTapGesture {
                         withAnimation {
                             stage = 1
                         }
@@ -83,16 +90,16 @@ struct PageFiveNoteView: View {
                     VStack(spacing: 50) {
                         Text("There was a hidden note between the pages!")
                             .multilineTextAlignment(.center)
-                            .foregroundStyle(.white)
-                            .font(.system(size: 42, design: .serif))
+                            .foregroundStyle(.black)
+                            .font(.system(size: 32, design: .serif))
                             .padding()
                         Text("Tap to inspect it")
                             .foregroundStyle(.red)
-                            .font(.system(size: 38, design: .serif))
+                            .font(.system(size: 28, design: .serif))
                             .padding(.bottom)
                         Image("hidden-note")
                             .resizable()
-                            .frame(width: 480, height: 480)
+                            .frame(width: 280, height: 280)
                     }
                     .onTapGesture {
                         withAnimation {
@@ -103,17 +110,18 @@ struct PageFiveNoteView: View {
                     VStack(spacing: 50) {
                         Text("Clue found!")
                             .foregroundStyle(.red)
-                            .font(.system(size: 50, design: .serif))
+                            .font(.system(size: 36, design: .serif))
                             .bold()
                             .padding(.bottom)
                         
                         Image("note")
                             .resizable()
-                            .frame(width: 560, height: 600)
+                            .frame(width: 320, height: 320)
                         
                         Text("Looks like our victim was afraid of someone already...")
+                            .multilineTextAlignment(.center)
                             .foregroundStyle(.gray)
-                            .font(.system(size: 32, design: .serif))
+                            .font(.system(size: 20, design: .serif))
                             .padding()
                     }
                 }
@@ -125,11 +133,11 @@ struct PageFiveNoteView: View {
 struct PageSixView: View {
     var body: some View {
         ZStack {
-            Color.black
+            Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
             Text("Page Six")
                 .font(.largeTitle)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
         }
     }
 }

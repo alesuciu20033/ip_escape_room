@@ -14,6 +14,7 @@
 		22E076572C21C4D10060BC05 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076562C21C4D00060BC05 /* PageViewController.swift */; };
 		22E0765B2C21C8DD0060BC05 /* PageViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */; };
 		22E0765D2C2208770060BC05 /* PageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0765C2C2208770060BC05 /* PageViews.swift */; };
+		22E0765F2C221CF00060BC05 /* HapticFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E0765E2C221CF00060BC05 /* HapticFeedbackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		22E076562C21C4D00060BC05 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllerWrapper.swift; sourceTree = "<group>"; };
 		22E0765C2C2208770060BC05 /* PageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViews.swift; sourceTree = "<group>"; };
+		22E0765E2C221CF00060BC05 /* HapticFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				22E076462C21A3130060BC05 /* CluesToTheCrimeApp.swift */,
 				22E076482C21A3130060BC05 /* ContentView.swift */,
 				22E0765C2C2208770060BC05 /* PageViews.swift */,
+				22E0765E2C221CF00060BC05 /* HapticFeedbackView.swift */,
 				22E076562C21C4D00060BC05 /* PageViewController.swift */,
 				22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */,
 				22E0764A2C21A3150060BC05 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			files = (
 				22E076492C21A3130060BC05 /* ContentView.swift in Sources */,
 				22E0765B2C21C8DD0060BC05 /* PageViewControllerWrapper.swift in Sources */,
+				22E0765F2C221CF00060BC05 /* HapticFeedbackView.swift in Sources */,
 				22E076472C21A3130060BC05 /* CluesToTheCrimeApp.swift in Sources */,
 				22E0765D2C2208770060BC05 /* PageViews.swift in Sources */,
 				22E076572C21C4D10060BC05 /* PageViewController.swift in Sources */,
