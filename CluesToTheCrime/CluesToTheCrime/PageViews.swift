@@ -8,10 +8,15 @@
 import SwiftUI
 import CoreHaptics
 
-struct RoughTextureView: View {
+struct NotebookLinesTexture: View {
     var body: some View {
         Image("paper-texture")
             .resizable(capInsets: EdgeInsets(), resizingMode: .tile)
+        
+        Image("notebook-lines")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .opacity(0.5)
     }
 }
 
@@ -21,14 +26,8 @@ struct PageOneView: View {
             Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
             
-            RoughTextureView()
+            NotebookLinesTexture()
                 .edgesIgnoringSafeArea(.top)
-            
-            Image("horizontal-line")
-                .resizable(resizingMode: .tile)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 10)
-                .ignoresSafeArea()
-                .opacity(0.2)
             
             VStack {
                 HStack {
@@ -51,10 +50,11 @@ struct PageOneView: View {
                         .padding([.top, .leading])
                     Spacer()
                 }
-                Text("Went to the farmer's market this morning and bought some fresh fruits and vegetables. I love how vibrant and colorful everything looks. I spent the afternoon cooking a new recipe, and it turned out delicious!")
+                Text("Went to the farmer's market this morning and bought some fresh fruits and vegetables. I spent the afternoon cooking a new recipe, and it turned out delicious!")
                     .foregroundColor(.black)
                     .padding()
             }
+            .padding()
         }
     }
 }
@@ -64,8 +64,10 @@ struct PageTwoView: View {
         ZStack {
             Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
-            RoughTextureView()
+            
+            NotebookLinesTexture()
                 .edgesIgnoringSafeArea(.top)
+            
             VStack(alignment: .leading) {
                 HStack {
                     Text("May 10, 2021")
@@ -81,6 +83,7 @@ struct PageTwoView: View {
                     .foregroundColor(.black)
                     .padding()
             }
+            .padding()
         }
     }
 }
@@ -90,8 +93,10 @@ struct PageThreeView: View {
         ZStack {
             Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
-            RoughTextureView()
+            
+            NotebookLinesTexture()
                 .edgesIgnoringSafeArea(.top)
+            
             VStack {
                 HStack {
                     Text("June 8, 2021")
@@ -100,7 +105,7 @@ struct PageThreeView: View {
                         .padding([.top, .leading])
                     Spacer()
                 }
-                Text("Spent the day at the beach. The weather was perfect, not too hot and with a gentle breeze. I swam in the ocean, built sandcastles with the kids, and had a picnic by the shore. It was a day well spent. In the afternoon, I took a long walk along the coastline, collecting seashells and enjoying the sound of the waves.")
+                Text("Spent the day at the beach. The weather was perfect, not too hot and with a gentle breeze. I swam in the ocean, built sandcastles with the kids, and had a picnic by the shore. It was a day well spent.")
                     .foregroundColor(.black)
                     .padding()
                 Text("As the sun began to set, the sky turned a beautiful array of colors. We ended the day with a bonfire, roasting marshmallows and sharing stories under the stars. It was a perfect summer day.")
@@ -113,10 +118,11 @@ struct PageThreeView: View {
                         .padding([.top, .leading])
                     Spacer()
                 }
-                Text("Had a quiet day at home today. I did some gardening in the morning, planting new flowers and tidying up the yard. It was so satisfying to see the garden looking vibrant and healthy. I then spent the afternoon painting. It's so relaxing to just lose myself in my hobbies. I created a new piece that I'm really proud of. In the evening, I watched the sunset from my porch, sipping a cup of tea.")
+                Text("Had a quiet day at home today. I did some gardening in the morning, planting new flowers and tidying up the yard. It was so satisfying to see the garden looking vibrant and healthy. I then spent the afternoon painting. It's so relaxing to just lose myself in my hobbies.")
                     .foregroundColor(.black)
                     .padding()
             }
+            .padding()
         }
     }
 }
@@ -126,8 +132,10 @@ struct PageFourView: View {
         ZStack {
             Color(red: 1.0, green: 0.98, blue: 0.94)
                 .ignoresSafeArea()
-            RoughTextureView()
+           
+            NotebookLinesTexture()
                 .edgesIgnoringSafeArea(.top)
+            
             VStack {
                 HStack {
                     Text("August 12, 2021")
@@ -139,7 +147,7 @@ struct PageFourView: View {
                 Text("Went hiking in the mountains today. The trail was challenging, but the views from the top were worth it. I felt a great sense of accomplishment reaching the peak and enjoyed the peaceful surroundings. The air was crisp and fresh, and the scenery was breathtaking.")
                     .foregroundColor(.black)
                     .padding()
-                Text("I took lots of photos to remember the experience. On the way back, I stopped by a small lake and rested for a while, listening to the sounds of nature. It was a refreshing and invigorating day that reminded me of the beauty of the outdoors.")
+                Text("I took lots of photos to remember the experience. On the way back, I stopped by a small lake and rested for a while, listening to the sounds of nature.")
                     .foregroundColor(.black)
                     .padding()
                 HStack {
@@ -149,10 +157,11 @@ struct PageFourView: View {
                         .padding([.top, .leading])
                     Spacer()
                 }
-                Text("Visited the local art museum today. They have a new exhibit that I've been wanting to see. The artwork was stunning, and I felt inspired to create something of my own. I spent hours wandering through the galleries, absorbing the creativity and talent on display. Ended the day with a cozy night in, curled up with a good book and a cup of hot chocolate. It was a perfect blend of inspiration and relaxation, and I felt content and at peace.")
+                Text("Visited the local art museum today. They have a new exhibit that I've been wanting to see. The artwork was stunning, and I felt inspired to create something of my own. I spent hours wandering through the galleries, absorbing the creativity and talent on display.")
                     .foregroundColor(.black)
                     .padding()
             }
+            .padding()
         }
     }
 }
@@ -166,8 +175,10 @@ struct PageFiveNoteView: View {
         ZStack {
                 Color(red: 1.0, green: 0.98, blue: 0.94)
                     .ignoresSafeArea()
-            RoughTextureView()
+            
+            NotebookLinesTexture()
                 .edgesIgnoringSafeArea(.top)
+            
             VStack {
                 if stage == 0 {
                     VStack(spacing: 50) {
@@ -228,6 +239,7 @@ struct PageFiveNoteView: View {
                     }
                 }
             }
+            .padding()
         }
     }
 }
