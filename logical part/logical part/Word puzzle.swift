@@ -2,20 +2,25 @@ import SwiftUI
 import CoreMotion
 
 struct WordPuzzleView: View {
-    @State private var words = ["Dia?y", "H?use", "K?nife", "Wa?ch", "Phon?", "Sc?een", "?utton"]
-    @State private var correctLetters = ["r", "a", "n", "t", "e", "r", "b"]
+    
+    // State variables to manage the words, correct letters, and current word index
+    @State private var words = ["Dia?y", "H?use", "K?ife", "Wa?ch", "Phon?", "Sc?een", "?utton"]
+    @State private var correctLetters = ["r", "o", "n", "t", "e", "r", "b"]
     @State private var currentWordIndex: Int? = 0
     @State private var selectedLetterIndex: Int = 0
     @State private var showPicker: Bool = false
     @State private var motionManager = CMMotionManager()
     
+    // The alphabet letters from where the player can choose
     let alphabet = Array("abcdefghijklmnopqrstuvwxyz")
     
     var body: some View {
         ZStack {
+           
             Color(hex: "#171717").edgesIgnoringSafeArea(.all)
             
             VStack {
+                
                 Text("Find the hidden word by solving this puzzle!")
                     .font(.custom("American Typewriter", size: 46))
                     .fontWeight(.regular)
@@ -24,13 +29,16 @@ struct WordPuzzleView: View {
                     .padding()
                 
                 HStack {
+                    
                     Divider()
                         .background(Color.white)
                         .frame(width: 2)
                     
                     VStack {
+                        // The player can go through each word in the list until he finds the one that he thinks is correct
                         ForEach(words.indices, id: \.self) { index in
                             HStack {
+                                // If the word is the current word being solved
                                 if index == currentWordIndex {
                                     formattedWord(words[index])
                                         .font(.custom("American Typewriter", size: 36))
@@ -39,6 +47,7 @@ struct WordPuzzleView: View {
                                             showPicker = true
                                         }
                                 } else {
+                                    // If the word is not the current word being solved
                                     formattedWord(words[index])
                                         .font(.custom("American Typewriter", size: 36))
                                         .foregroundColor(.white)
@@ -48,6 +57,7 @@ struct WordPuzzleView: View {
                         }
                     }
                     
+                   
                     Divider()
                         .background(Color.white)
                         .frame(width: 2)
@@ -55,6 +65,7 @@ struct WordPuzzleView: View {
                 
                 Spacer()
                 
+                // Show the picker if showPicker is true
                 if showPicker {
                     VStack {
                         Picker("Select Letter", selection: $selectedLetterIndex) {
@@ -68,9 +79,10 @@ struct WordPuzzleView: View {
                         .background(Color.white)
                         .frame(height: 150)
                         .clipped()
-                        .border(Color.white, width: 2)  
+                        .border(Color.white, width: 2)
                         .padding()
                         
+                        // Button to confirm letter selection
                         Button("Done") {
                             applySelectedLetter()
                             moveToNextWord()
@@ -87,20 +99,25 @@ struct WordPuzzleView: View {
         }
     }
     
+    // Function to format the word by highlighting the placeholder character in red
     func formattedWord(_ word: String) -> Text {
-        let parts = word.split(separator: "?")
         var formatted = Text("")
-
-        for (index, part) in parts.enumerated() {
-            formatted = formatted + Text(String(part))
-            if index < parts.count - 1 {
-                formatted = formatted + Text("?").foregroundColor(Color(hex: "#8F0000"))
+        
+        // Loop through each character in the word
+        for char in word {
+            if char == "?" {
+                //
+                formatted = formatted + Text(String(char)).foregroundColor(Color(hex: "#D35E5E"))
+            } else {
+                // Otherwise, keep the character as is
+                formatted = formatted + Text(String(char))
             }
         }
-
+        
         return formatted
     }
-    
+
+    // Start accelerometer to detect shake gesture
     func startShakeDetection() {
         guard motionManager.isAccelerometerAvailable else { return }
         
@@ -111,6 +128,7 @@ struct WordPuzzleView: View {
             let acceleration = data.acceleration
             let magnitude = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
             
+            // If shake is detected
             if magnitude > 2.5 {
                 applySelectedLetter()
                 moveToNextWord()
@@ -118,6 +136,7 @@ struct WordPuzzleView: View {
         }
     }
     
+    // This function applies the letter that was selected by the player to the current word
     func applySelectedLetter() {
         if let index = currentWordIndex {
             let correctLetter = String(alphabet[selectedLetterIndex])
@@ -129,6 +148,7 @@ struct WordPuzzleView: View {
         }
     }
     
+    // Move to the next word in the list
     func moveToNextWord() {
         if let currentWordIndex = currentWordIndex, currentWordIndex < words.count - 1 {
             self.currentWordIndex = currentWordIndex + 1
@@ -138,6 +158,7 @@ struct WordPuzzleView: View {
     }
 }
 
+// Extension to create a color from a hex string
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)
@@ -151,6 +172,7 @@ extension Color {
     }
 }
 
+// Preview
 struct WordPuzzleView_Previews: PreviewProvider {
     static var previews: some View {
         WordPuzzleView()
