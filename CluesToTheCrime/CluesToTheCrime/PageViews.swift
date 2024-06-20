@@ -71,6 +71,7 @@ struct PageFourView: View {
 // The page which contains the note
 struct PageFiveNoteView: View {
     @State private var stage = 0
+    @Binding var showFallingNote: Bool
     @StateObject private var hapticFeedbackManager = HapticFeedbackManager()
     
     var body: some View {
@@ -96,12 +97,18 @@ struct PageFiveNoteView: View {
                             .foregroundStyle(.black)
                             .font(.system(size: 32, design: .serif))
                         
-                        Image("folded-note")
-                            .resizable()
-                            .frame(width: 380, height: 380)
-                    }
-                    .onAppear {
-                        hapticFeedbackManager.playHapticFeedback()
+                        if !showFallingNote {
+                            Image("folded-note")
+                                .resizable()
+                                .frame(width: 300, height: 300)
+                                .onAppear {
+            
+                                    withAnimation {
+                                        showFallingNote = true
+                                    }
+                                    hapticFeedbackManager.playHapticFeedback()
+                                }
+                        }
                     }
                     .onTapGesture {
                         withAnimation {
@@ -152,7 +159,6 @@ struct PageFiveNoteView: View {
         }
     }
 }
-
 
 struct PageSixView: View {
     var body: some View {

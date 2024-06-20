@@ -9,12 +9,11 @@ import SwiftUI
 
 struct DiaryPageBackground: View {
     var body: some View {
-        ZStack {
-            Color(red: 1.0, green: 0.98, blue: 0.94)
-                .ignoresSafeArea()
-            
-            NotebookLineTexture()
-                .edgesIgnoringSafeArea(.top)
-        }
+        Color(red: 1.0, green: 0.98, blue: 0.94)
+            .ignoresSafeArea()
+            .overlay(
+                NotebookLineTexture()
+                    .edgesIgnoringSafeArea(.top)
+            )
     }
 }

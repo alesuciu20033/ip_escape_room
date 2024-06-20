@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var noteOffset: CGFloat = 0
+    @State private var showFallingNote = false
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -27,6 +30,20 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
+                
+                if showFallingNote {
+                    Image("folded-note")
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                        .offset(y: noteOffset)
+                        .animation(.easeIn(duration: 1.5), value: noteOffset)
+                        .onAppear {
+                            noteOffset = geometry.size.height * 0.4
+                        }
+                }
+            }
+            .onChange(of: showFallingNote) {
+                noteOffset = showFallingNote ? geometry.size.height * 0.4 : 0
             }
         }
     }
@@ -37,7 +54,7 @@ struct ContentView: View {
         let page2 = UIHostingController(rootView: PageTwoView())
         let page3 = UIHostingController(rootView: PageThreeView())
         let page4 = UIHostingController(rootView: PageFourView())
-        let page5 = UIHostingController(rootView: PageFiveNoteView())
+        let page5 = UIHostingController(rootView: PageFiveNoteView(showFallingNote: $showFallingNote))
         let page6 = UIHostingController(rootView: PageSixView())
         
         return [page1, page2, page3, page4, page5, page6]
