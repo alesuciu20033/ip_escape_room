@@ -9,21 +9,19 @@ import UIKit
 
 // Creating a subclass of UIPageViewController which manages the pages and handles the page curl animation
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
-    // Array holding the view controllers for each page
     var pages = [UIViewController]()
     
-    // Called after the view controller has loaded its view hierarchy into memory, setting the initial page
+// Called after the view controller has loaded its view hierarchy into memory, setting the initial page
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the data source and delegate to self
         self.dataSource = self
         self.delegate = self
         
-        // Set the initial page to be displayed
-        let initialPage = 0
-        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+// Set the initial page to be displayed
+        if !pages.isEmpty {
+            setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
+        }
     }
     
     // Return the total number of pages
@@ -43,7 +41,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             return nil
         }
         
-        // Calculating the previous index
         let previousIndex = viewControllerIndex - 1
         guard previousIndex >= 0 else { return nil }
         guard pages.count > previousIndex else { return nil }
@@ -51,13 +48,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return pages[previousIndex]
     }
     
-    // Return the view controller to display after the given view controller
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
         
-        // Calculating the next index
         let nextIndex = viewControllerIndex + 1
         guard pages.count != nextIndex else { return nil }
         guard pages.count > nextIndex else { return nil }

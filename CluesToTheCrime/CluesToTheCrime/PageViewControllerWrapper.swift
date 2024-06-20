@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-// A new struct conforming to the UIViewControllerRepresentable protocol, allowing the integration of a UIViewController into the view hierarchy.
+// Conforming to the UIViewControllerRepresentable protocol, allowing the integration of a UIViewController into the view hierarchy.
 struct PageViewControllerWrapper: UIViewControllerRepresentable {
     var pages: [UIViewController]
-    
+
     // This method creates and returns an instance of the UIPageViewController
     func makeUIViewController(context: Context) -> UIPageViewController {
         // Initializing the custom PageViewController with page curl transition style and horizontal navigation orientation

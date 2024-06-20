@@ -9,11 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        // Using PageViewControllerWrapper to display the pages
-        PageViewControllerWrapper(pages: createPages())
+        GeometryReader { geometry in
+            ZStack {
+                Color.gray
+                    .ignoresSafeArea()
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        PageViewControllerWrapper(pages: createPages())
+                            .frame(width: geometry.size.width * 0.5, height: geometry.size.height * 0.6)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
     
-    // Creating an array of UIViewControllers to be used as pages which use UIHostingController, embeding the views in view controllers
+    // Creating an array of UIViewControllers to be used as pages which use UIHostingController, embedding the views in view controllers
     func createPages() -> [UIViewController] {
         let page1 = UIHostingController(rootView: PageOneView())
         let page2 = UIHostingController(rootView: PageTwoView())
