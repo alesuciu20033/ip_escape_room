@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B253A28C2C22FED800E1FDE9 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */; };
 		B2ED6F6C2C21CA1700AE2DCB /* mini_gameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		B2ED6F682C21CA1700AE2DCB /* mini-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mini-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mini_gameApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				B2ED6F6B2C21CA1700AE2DCB /* mini_gameApp.swift */,
-				B253A28B2C22FED800E1FDE9 /* SwiftUIView.swift */,
 			);
 			path = "mini-game";
 			sourceTree = "<group>";
@@ -121,7 +118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B253A28C2C22FED800E1FDE9 /* SwiftUIView.swift in Sources */,
 				B2ED6F6C2C21CA1700AE2DCB /* mini_gameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
