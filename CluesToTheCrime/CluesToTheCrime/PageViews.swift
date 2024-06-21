@@ -8,6 +8,21 @@
 import SwiftUI
 import CoreHaptics
 
+struct CoverView: View {
+    var body: some View {
+        ZStack {
+            Image("leather-texture")
+                .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                .edgesIgnoringSafeArea(.top)
+            Text("Damon's Diary")
+                .foregroundStyle(.white)
+                .font(.system(size: 38, design: .serif))
+                .bold()
+                .padding(.bottom, 180)
+        }
+    }
+}
+
 struct PageOneView: View {
     var body: some View {
         ZStack {
@@ -70,92 +85,46 @@ struct PageFourView: View {
 
 // The page which contains the note
 struct PageFiveNoteView: View {
-    @State private var stage = 0
     @Binding var showFallingNote: Bool
+    @Binding var noteVisible: Bool
+    @Binding var stage: Int
+    @Binding var hideDiary: Bool
     @StateObject private var hapticFeedbackManager = HapticFeedbackManager()
-    
+
     var body: some View {
         ZStack {
-            DiaryPageBackground()
-            
-            VStack(spacing: 100) {
-                Image("scribble")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                
-                Image("scribble")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .opacity(0.8)
-            }
-            .padding()
-            
-            VStack {
-                if stage == 0 {
-                    VStack(spacing: 70) {
-                        Text("What is this?")
-                            .foregroundStyle(.black)
-                            .font(.system(size: 32, design: .serif))
-                        
-                        if !showFallingNote {
-                            Image("folded-note")
-                                .resizable()
-                                .frame(width: 300, height: 300)
-                                .onAppear {
-            
-                                    withAnimation {
-                                        showFallingNote = true
-                                    }
-                                    hapticFeedbackManager.playHapticFeedback()
-                                }
-                        }
-                    }
-                    .onTapGesture {
-                        withAnimation {
-                            stage = 1
-                        }
-                    }
-                } else if stage == 1 {
-                    VStack(spacing: 50) {
-                        Text("There was a hidden note between the pages!")
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(.black)
-                            .font(.system(size: 32, design: .serif))
-                            .padding()
-                        Text("Tap to inspect it")
-                            .foregroundStyle(.red)
-                            .font(.system(size: 28, design: .serif))
-                            .padding(.bottom)
-                        Image("hidden-note")
-                            .resizable()
-                            .frame(width: 280, height: 280)
-                    }
-                    .onTapGesture {
-                        withAnimation {
-                            stage = 2
-                        }
-                    }
-                } else if stage == 2 {
-                    VStack(spacing: 50) {
-                        Text("Clue found!")
-                            .foregroundStyle(.red)
-                            .font(.system(size: 36, design: .serif))
-                            .bold()
-                            .padding(.bottom)
-                        
-                        Image("note")
-                            .resizable()
-                            .frame(width: 300, height: 320)
-                        
-                        Text("Looks like our victim was afraid of someone already...")
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(.gray)
-                            .font(.system(size: 20, design: .serif))
-                            .padding()
+            if !hideDiary {
+                DiaryPageBackground()
+
+                VStack(spacing: 80) {
+                    Image("scribble")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Image("scribble")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0.8)
+                    
+                    Image("scribble")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0.7)
+                    
+                    Image("scribble")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0.8)
+                }
+                .padding(.horizontal, 40)
+                .onAppear {
+                    hapticFeedbackManager.playHapticFeedback()
+                    withAnimation {
+                        showFallingNote = true
+                        noteVisible = true
                     }
                 }
             }
-            .padding()
         }
     }
 }
