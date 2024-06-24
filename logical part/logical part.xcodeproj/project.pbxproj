@@ -14,6 +14,7 @@
 		132F242A2C21A9C800DFBAF1 /* Word puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24292C21A9C800DFBAF1 /* Word puzzle.swift */; };
 		132F24302C29AB2000DFBAF1 /* WrongPathView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */; };
 		132F24342C29ABAA00DFBAF1 /* WrongPathView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */; };
+		132F243A2C29BBF300DFBAF1 /* gunsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 132F24392C29BBF300DFBAF1 /* gunsound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		132F24292C21A9C800DFBAF1 /* Word puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word puzzle.swift"; sourceTree = "<group>"; };
 		132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView1.swift; sourceTree = "<group>"; };
 		132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView2.swift; sourceTree = "<group>"; };
+		132F24392C29BBF300DFBAF1 /* gunsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gunsound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				132F241B2C21A95E00DFBAF1 /* logical_partApp.swift */,
 				132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */,
+				132F24392C29BBF300DFBAF1 /* gunsound.mp3 */,
 				132F241D2C21A95E00DFBAF1 /* ContentView.swift */,
 				132F24292C21A9C800DFBAF1 /* Word puzzle.swift */,
 				132F241F2C21A95F00DFBAF1 /* Assets.xcassets */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				132F24232C21A95F00DFBAF1 /* Preview Assets.xcassets in Resources */,
+				132F243A2C29BBF300DFBAF1 /* gunsound.mp3 in Resources */,
 				132F24202C21A95F00DFBAF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

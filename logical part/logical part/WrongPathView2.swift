@@ -1,11 +1,15 @@
 import SwiftUI
+import AVFoundation
 
 struct WrongPathView2: View {
+    @State private var offset = CGSize.zero
+    @State private var audioPlayer: AVAudioPlayer?
+
     var body: some View {
         ZStack {
             // Background color
-            (Color("Background"))
-.edgesIgnoringSafeArea(.all)
+            Color("Background")
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 Spacer()
@@ -20,31 +24,57 @@ struct WrongPathView2: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 350, height: 200)
+                    .offset(offset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                self.offset = gesture.translation
+                            }
+                            .onEnded { _ in
+                                // Play gunshot sound when drag ends
+                                self.playGunshotSound()
+                            }
+                    )
                 
                 Text("..and now you are DEAD")
                     .font(.custom("American Typewriter", size: 36))
                     .foregroundColor(Color("White"))
-
                     .multilineTextAlignment(.center)
                     .padding()
                 
                 Spacer()
                 
                 Button(action: {
-                    // Navigate back to the start or previous page
-                    // Add your navigation code here
+                  
                 }) {
                     Text("go back and try again")
                         .font(.custom("American Typewriter", size: 24))
                         .foregroundColor(Color("Red"))
                         .padding()
                         .background(Color("Button"))
-
                         .cornerRadius(8)
                 }
                 .padding()
             }
         }
+        .onAppear {
+            self.setupAudioPlayer()
+        }
+    }
+
+    func setupAudioPlayer() {
+        if let soundURL = Bundle.main.url(forResource: "gunsound", withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.prepareToPlay()
+            } catch {
+                print("Failed to load sound: \(error)")
+            }
+        }
+    }
+
+    func playGunshotSound() {
+        audioPlayer?.play()
     }
 }
 
