@@ -17,7 +17,8 @@ struct WordPuzzleView: View {
     var body: some View {
         ZStack {
            
-            Color(hex: "#171717").edgesIgnoringSafeArea(.all)
+            (Color("Background"))
+.edgesIgnoringSafeArea(.all)
             
             VStack {
                 
@@ -107,7 +108,8 @@ struct WordPuzzleView: View {
         for char in word {
             if char == "?" {
                 //
-                formatted = formatted + Text(String(char)).foregroundColor(Color(hex: "#D35E5E"))
+                formatted = formatted + Text(String(char)).foregroundColor(Color("Red"))
+
             } else {
                 // Otherwise, keep the character as is
                 formatted = formatted + Text(String(char))
@@ -158,19 +160,7 @@ struct WordPuzzleView: View {
     }
 }
 
-// Extension to create a color from a hex string
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        scanner.currentIndex = hex.startIndex
-        var rgbValue: UInt64 = 0
-        scanner.scanHexInt64(&rgbValue)
-        let r = Double((rgbValue & 0xff0000) >> 16) / 255.0
-        let g = Double((rgbValue & 0xff00) >> 8) / 255.0
-        let b = Double(rgbValue & 0xff) / 255.0
-        self.init(red: r, green: g, blue: b)
-    }
-}
+
 
 // Preview
 struct WordPuzzleView_Previews: PreviewProvider {

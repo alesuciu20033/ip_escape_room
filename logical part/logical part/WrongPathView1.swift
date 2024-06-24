@@ -4,14 +4,16 @@ struct WrongPathView1: View {
     var body: some View {
         ZStack {
            
-            Color(hex: "#171717").edgesIgnoringSafeArea(.all)
+            (Color("Background"))
+.edgesIgnoringSafeArea(.all)
             
             VStack {
                
                 Text("Clue found!")
                     .font(.custom("American Typewriter", size: 46))
                     .fontWeight(.regular)
-                    .foregroundColor(Color(hex: "#D35E5E"))
+                    .foregroundColor(Color("Red"))
+
                     .multilineTextAlignment(.center)
                     .padding()
                 
@@ -31,8 +33,8 @@ struct WrongPathView1: View {
                         Image("Present")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .offset(x: 25, y: 50),
+                            .frame(width: 35, height: 60)
+                            .offset(x: -55, y: -65),
                         alignment: .bottomTrailing
                     )
                 
@@ -47,9 +49,9 @@ struct WrongPathView1: View {
                 NavigationLink(destination: WrongPathView2()) {
                     Text("Continue")
                         .font(.custom("American Typewriter", size: 24))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("Red"))
                         .padding()
-                        .background(Color(hex: "#D35E5E"))
+                        .background(Color("Button"))
                         .cornerRadius(8)
                 }
                 .padding()
