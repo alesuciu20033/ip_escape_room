@@ -19,6 +19,7 @@
 		22E076632C24C6E30060BC05 /* DiaryPageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076622C24C6E30060BC05 /* DiaryPageBackground.swift */; };
 		22E076662C24C74A0060BC05 /* TextSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076652C24C74A0060BC05 /* TextSection.swift */; };
 		22E076682C2A1F530060BC05 /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076672C2A1F530060BC05 /* ParticleEffect.swift */; };
+		22E0766A2C2A2EFB0060BC05 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E076692C2A2EFB0060BC05 /* StrokeText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		22E076622C24C6E30060BC05 /* DiaryPageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPageBackground.swift; sourceTree = "<group>"; };
 		22E076652C24C74A0060BC05 /* TextSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextSection.swift; path = CluesToTheCrime/TextSection.swift; sourceTree = SOURCE_ROOT; };
 		22E076672C2A1F530060BC05 /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
+		22E076692C2A2EFB0060BC05 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +71,10 @@
 			children = (
 				22E076462C21A3130060BC05 /* CluesToTheCrimeApp.swift */,
 				22E076482C21A3130060BC05 /* ContentView.swift */,
-				22E076672C2A1F530060BC05 /* ParticleEffect.swift */,
 				22E0765C2C2208770060BC05 /* PageViews.swift */,
+				22E0766B2C2A2F230060BC05 /* HelperViews */,
 				22E076642C24C6EA0060BC05 /* DiaryPagesViews */,
-				22E0765E2C221CF00060BC05 /* HapticFeedbackView.swift */,
-				22E076562C21C4D00060BC05 /* PageViewController.swift */,
-				22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */,
+				22E0766C2C2A2F4D0060BC05 /* PageCurlAnimation */,
 				22E0764A2C21A3150060BC05 /* Assets.xcassets */,
 				22E0764C2C21A3150060BC05 /* Preview Content */,
 			);
@@ -97,6 +97,25 @@
 				22E076622C24C6E30060BC05 /* DiaryPageBackground.swift */,
 			);
 			path = DiaryPagesViews;
+			sourceTree = "<group>";
+		};
+		22E0766B2C2A2F230060BC05 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				22E076692C2A2EFB0060BC05 /* StrokeText.swift */,
+				22E076672C2A1F530060BC05 /* ParticleEffect.swift */,
+				22E0765E2C221CF00060BC05 /* HapticFeedbackView.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		22E0766C2C2A2F4D0060BC05 /* PageCurlAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				22E076562C21C4D00060BC05 /* PageViewController.swift */,
+				22E0765A2C21C8DD0060BC05 /* PageViewControllerWrapper.swift */,
+			);
+			path = PageCurlAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +196,7 @@
 				22E076612C24C6D50060BC05 /* NotebookLineTexture.swift in Sources */,
 				22E0765F2C221CF00060BC05 /* HapticFeedbackView.swift in Sources */,
 				22E076472C21A3130060BC05 /* CluesToTheCrimeApp.swift in Sources */,
+				22E0766A2C2A2EFB0060BC05 /* StrokeText.swift in Sources */,
 				22E0765D2C2208770060BC05 /* PageViews.swift in Sources */,
 				22E076572C21C4D10060BC05 /* PageViewController.swift in Sources */,
 			);

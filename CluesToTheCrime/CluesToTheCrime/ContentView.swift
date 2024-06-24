@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var noteOffset: CGFloat = 0
-    @State private var showFallingNote = false
     @State private var stage = 0
+    @State private var noteOffset: CGFloat = 0
+    
     @State private var noteVisible = false
+    @State private var hideFallingNote = true
     @State private var hideDiary = true
     @State private var hideDiaryOnTable = false
     @State private var hideParticles = false
@@ -26,14 +27,12 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 if !hideDiaryOnTable {
-                    Text("So this is where Damon worked...")
-                        .foregroundStyle(.white)
-                        .font(.system(size: 42, design: .serif))
-                        .bold()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(8)
-                        .offset(y: -40)
-                    
+                     StrokeText(text: "So this is where Damon worked...", width: 2, color: .black)
+                    .foregroundColor(.white)
+                    .font(.system(size: 42, weight: .bold, design: .serif))
+                    .shadow(color: .black, radius: 2)
+                    .offset(y: -40)
+
                     Image("closed-diary")
                         .resizable()
                         .frame(width: 100, height: 100)
@@ -61,8 +60,7 @@ struct ContentView: View {
                     
                     Text((textSwitch ? "" : "This has to be his diary..."))
                         .foregroundStyle(.white)
-                        .font(.system(size: 42, design: .serif))
-                        .bold()
+                        .font(.system(size: 42, weight: .bold, design: .serif))
                         .offset(y: -450)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -85,22 +83,20 @@ struct ContentView: View {
                     }
                 }
                 
-                if showFallingNote || stage > 0 {
+                if !hideFallingNote || stage > 0 {
                     VStack {
                         Spacer()
                         if stage == 0 {
                             Text("What is this?")
                                 .foregroundStyle(.white)
-                                .font(.system(size: 42, design: .serif))
-                                .bold()
+                                .font(.system(size: 42, weight: .bold, design: .serif))
                                 .padding(.bottom, geometry.size.height * 0.8)
                         } else if stage == 1 {
                             VStack {
                                 Text("There was a hidden note between the pages!")
                                     .multilineTextAlignment(.center)
                                     .foregroundStyle(.white)
-                                    .font(.system(size: 42, design: .serif))
-                                    .bold()
+                                    .font(.system(size: 42, weight: .bold, design: .serif))
                                     .padding()
                             }
                             .padding(.bottom, geometry.size.height * 0.8)
@@ -144,9 +140,8 @@ struct ContentView: View {
                         VStack {
                             Text("Clue found!")
                                 .foregroundStyle(.red)
-                                .font(.system(size: 50, design: .serif))
-                                .bold()
-                                .padding(.bottom, 50)
+                                .font(.system(size: 54, weight: .bold, design: .serif))
+                                .padding(.bottom, 80)
                                 .zIndex(10)
                             
                             Image("note")
@@ -158,8 +153,7 @@ struct ContentView: View {
                             Text("Looks like our victim was already afraid of someone...")
                                 .multilineTextAlignment(.center)
                                 .foregroundStyle(.white)
-                                .font(.system(size: 42, design: .serif))
-                                .bold()
+                                .font(.system(size: 38, weight: .bold, design: .serif))
                                 .padding(.top, 50)
                                 .zIndex(10)
                         }
@@ -178,7 +172,7 @@ struct ContentView: View {
         let page2 = UIHostingController(rootView: PageTwoView())
         let page3 = UIHostingController(rootView: PageThreeView())
         let page4 = UIHostingController(rootView: PageFourView())
-        let page5 = UIHostingController(rootView: PageFiveNoteView(showFallingNote: $showFallingNote, noteVisible: $noteVisible, stage: $stage, hideDiary: $hideDiary))
+        let page5 = UIHostingController(rootView: PageFiveNoteView(showFallingNote: $hideFallingNote, noteVisible: $noteVisible, stage: $stage, hideDiary: $hideDiary))
         let page6 = UIHostingController(rootView: PageSixView())
         
         return [cover, page1, page2, page3, page4, page5, page6]
