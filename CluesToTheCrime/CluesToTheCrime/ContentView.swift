@@ -12,15 +12,64 @@ struct ContentView: View {
     @State private var showFallingNote = false
     @State private var stage = 0
     @State private var noteVisible = false
-    @State private var hideDiary = false
+    @State private var hideDiary = true
+    @State private var hideDiaryOnTable = false
+    @State private var hideParticles = false
+    @State private var textSwitch = false
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.gray
-                    .ignoresSafeArea()
+                Image("steampunk-office")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
+                if !hideDiaryOnTable {
+                    Text("So this is where Damon worked...")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 42, design: .serif))
+                        .bold()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(8)
+                        .offset(y: -40)
+                    
+                    Image("closed-diary")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .offset(x: 95, y: 410)
+                        .rotationEffect(.degrees(-20))
+                        .onTapGesture {
+                            withAnimation {
+                                hideDiary = false
+                                hideDiaryOnTable = true
+                                hideParticles = true
+                            }
+                        }
+                }
+                
+                if !hideParticles {
+                    ParticleEffect(targetSize: CGSize(width: 100, height: 100))
+                        .frame(width: 100, height: 100)
+                        .offset(x: 225, y: 340)
+                }
                 
                 if !hideDiary {
+                    Color.black
+                        .opacity(0.7)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    Text((textSwitch ? "" : "This has to be his diary..."))
+                        .foregroundStyle(.white)
+                        .font(.system(size: 42, design: .serif))
+                        .bold()
+                        .offset(y: -450)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                self.textSwitch.toggle()
+                            }
+                        }
+                    
                     VStack {
                         Spacer()
                         HStack {
@@ -41,36 +90,20 @@ struct ContentView: View {
                         Spacer()
                         if stage == 0 {
                             Text("What is this?")
-                                .foregroundStyle(.black)
-                                .font(.system(size: 50, design: .serif))
+                                .foregroundStyle(.white)
+                                .font(.system(size: 42, design: .serif))
+                                .bold()
                                 .padding(.bottom, geometry.size.height * 0.8)
                         } else if stage == 1 {
                             VStack {
                                 Text("There was a hidden note between the pages!")
                                     .multilineTextAlignment(.center)
-                                    .foregroundStyle(.black)
-                                    .font(.system(size: 38, design: .serif))
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 42, design: .serif))
+                                    .bold()
                                     .padding()
-                                Text("Tap to inspect it")
-                                    .foregroundStyle(.red)
-                                    .font(.system(size: 36, design: .serif))
-                                    .padding(.bottom)
                             }
                             .padding(.bottom, geometry.size.height * 0.8)
-                        } else if stage == 2 {
-                            VStack {
-                                Text("Clue found!")
-                                    .foregroundStyle(.red)
-                                    .font(.system(size: 50, design: .serif))
-                                    .bold()
-                                    .padding(.top, 100)
-                                Spacer()
-                                Text("Looks like our victim was afraid of someone already...")
-                                    .multilineTextAlignment(.center)
-                                    .foregroundStyle(.black)
-                                    .font(.system(size: 30, design: .serif))
-                                    .padding(.bottom, 100)
-                            }
                         }
                         Spacer()
                     }
@@ -80,11 +113,11 @@ struct ContentView: View {
                     if stage == 0 {
                         Image("folded-note")
                             .resizable()
-                            .frame(width: 300, height: 300)
+                            .frame(width: 270, height: 270)
                             .offset(y: noteOffset)
                             .onAppear {
                                 withAnimation(.easeIn(duration: 1.5)) {
-                                    noteOffset = geometry.size.height * 0.4
+                                    noteOffset = geometry.size.height * 0.37
                                 }
                             }
                             .onTapGesture {
@@ -95,7 +128,7 @@ struct ContentView: View {
                     } else if stage == 1 {
                         Image("hidden-note")
                             .resizable()
-                            .frame(width: 260, height: 260)
+                            .frame(width: 200, height: 200)
                             .offset(y: noteOffset)
                             .onTapGesture {
                                 withAnimation {
@@ -104,11 +137,33 @@ struct ContentView: View {
                                 }
                             }
                     } else if stage == 2 {
-                        Image("note")
-                            .resizable()
-                            .frame(width: 600, height: 630)
-                            .offset(y: 0)
-                            .zIndex(10)
+                        Color.black
+                            .opacity(0.7)
+                            .edgesIgnoringSafeArea(.all)
+                        
+                        VStack {
+                            Text("Clue found!")
+                                .foregroundStyle(.red)
+                                .font(.system(size: 50, design: .serif))
+                                .bold()
+                                .padding(.bottom, 50)
+                                .zIndex(10)
+                            
+                            Image("note")
+                                .resizable()
+                                .frame(width: 500, height: 550)
+                                .offset(y: -50)
+                                .zIndex(10)
+                        
+                            Text("Looks like our victim was already afraid of someone...")
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(.white)
+                                .font(.system(size: 42, design: .serif))
+                                .bold()
+                                .padding(.top, 50)
+                                .zIndex(10)
+                        }
+                       
                     }
                 }
                 
@@ -133,3 +188,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
