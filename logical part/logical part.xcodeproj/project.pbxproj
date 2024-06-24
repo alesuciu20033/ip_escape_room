@@ -12,6 +12,8 @@
 		132F24202C21A95F00DFBAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132F241F2C21A95F00DFBAF1 /* Assets.xcassets */; };
 		132F24232C21A95F00DFBAF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132F24222C21A95F00DFBAF1 /* Preview Assets.xcassets */; };
 		132F242A2C21A9C800DFBAF1 /* Word puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24292C21A9C800DFBAF1 /* Word puzzle.swift */; };
+		132F24302C29AB2000DFBAF1 /* WrongPathView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */; };
+		132F24342C29ABAA00DFBAF1 /* WrongPathView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		132F241F2C21A95F00DFBAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		132F24222C21A95F00DFBAF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		132F24292C21A9C800DFBAF1 /* Word puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word puzzle.swift"; sourceTree = "<group>"; };
+		132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView1.swift; sourceTree = "<group>"; };
+		132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +58,12 @@
 			isa = PBXGroup;
 			children = (
 				132F241B2C21A95E00DFBAF1 /* logical_partApp.swift */,
+				132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */,
 				132F241D2C21A95E00DFBAF1 /* ContentView.swift */,
 				132F24292C21A9C800DFBAF1 /* Word puzzle.swift */,
 				132F241F2C21A95F00DFBAF1 /* Assets.xcassets */,
 				132F24212C21A95F00DFBAF1 /* Preview Content */,
+				132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */,
 			);
 			path = "logical part";
 			sourceTree = "<group>";
@@ -141,8 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				132F241E2C21A95E00DFBAF1 /* ContentView.swift in Sources */,
+				132F24302C29AB2000DFBAF1 /* WrongPathView1.swift in Sources */,
 				132F241C2C21A95E00DFBAF1 /* logical_partApp.swift in Sources */,
 				132F242A2C21A9C800DFBAF1 /* Word puzzle.swift in Sources */,
+				132F24342C29ABAA00DFBAF1 /* WrongPathView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
