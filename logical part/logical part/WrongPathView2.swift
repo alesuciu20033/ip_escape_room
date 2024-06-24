@@ -14,16 +14,16 @@ struct WrongPathView2: View {
             VStack {
                 Spacer()
                 
-                Text("You have been trapped..")
+                Text("Open the box..")
                     .font(.custom("American Typewriter", size: 36))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding()
                 
-                Image("Gun")
+                Image("present2")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 350, height: 200)
+                    .frame(width: 280, height: 200)
                     .offset(offset)
                     .gesture(
                         DragGesture()
@@ -36,7 +36,7 @@ struct WrongPathView2: View {
                             }
                     )
                 
-                Text("..and now you are DEAD")
+                Text("..and see what is your present")
                     .font(.custom("American Typewriter", size: 36))
                     .foregroundColor(Color("White"))
                     .multilineTextAlignment(.center)
@@ -44,17 +44,17 @@ struct WrongPathView2: View {
                 
                 Spacer()
                 
-                Button(action: {
+              //  Button(action: {
                   
-                }) {
-                    Text("go back and try again")
-                        .font(.custom("American Typewriter", size: 24))
-                        .foregroundColor(Color("Red"))
-                        .padding()
-                        .background(Color("Button"))
-                        .cornerRadius(8)
-                }
-                .padding()
+            //    }) {
+                   // Text("go back and try again")
+                      //  .font(.custom("American Typewriter", size: 24))
+                       // .foregroundColor(Color("Red"))
+                      //  .padding()
+                      //  .background(Color("Button"))
+                      //  .cornerRadius(8)
+               // }
+              //  .padding()
             }
         }
         .onAppear {
@@ -63,7 +63,7 @@ struct WrongPathView2: View {
     }
 
     func setupAudioPlayer() {
-        if let soundURL = Bundle.main.url(forResource: "gunsound", withExtension: "mp3") {
+        if let soundURL = Bundle.main.url(forResource: "openbox", withExtension: "mp3") {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
                 audioPlayer?.prepareToPlay()
