@@ -1,4 +1,4 @@
-# ip_escape_room
+
 # Project challenge
 
 To create a minigame concept for Enversed Studios, based on the murder and mystery theme, while including some detective scenes.
