@@ -11,7 +11,7 @@ struct ParticleEffect: View {
     @State private var particles: [Particle] = []
     
     let particleCount = 50
-    let particleSizeRange: ClosedRange<CGFloat> = 2...5
+    let particleSizeRange: ClosedRange<CGFloat> = 3...6
     let animationDurationRange: ClosedRange<Double> = 2...4
     let circleRadius: CGFloat = 50
     

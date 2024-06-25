@@ -15,8 +15,10 @@ struct ContentView: View {
     @State private var hideFallingNote = true
     @State private var hideDiary = true
     @State private var hideDiaryOnTable = false
+    @State private var hideBlueprint = true
+    @State private var hideBlueprintOnTable = false
     @State private var hideParticles = false
-    @State private var textSwitch = false
+    @State private var hideText = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,6 +27,52 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
+                
+                if !hideBlueprintOnTable {
+                    Image("rolled-blueprint")
+                        .resizable()
+                        .frame(width: 180, height: 180)
+                        .offset(x: 240, y: 30)
+                        .rotationEffect(.degrees(100))
+                        .onTapGesture {
+                            withAnimation {
+                                hideBlueprint = false
+                                hideParticles = true
+                                hideDiaryOnTable = true
+                            }
+                        }
+                }
+                
+                if !hideBlueprint {
+                    Color.black
+                        .opacity(0.7)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack(spacing: 100) {
+                        Text("This was probably the last project of Damon...")
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 38, weight: .bold, design: .serif))
+                        
+                        Image("blueprint")
+                            .resizable()
+                            .frame(width: 732, height: 442)
+                        
+                        Text("Nothing useful here.")
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+                            .font(.system(size: 38, weight: .bold, design: .serif))
+                            .padding(.bottom, 50)
+                    }.onTapGesture {
+                        withAnimation {
+                            hideBlueprint = true
+                            hideParticles = false
+                            hideDiaryOnTable = false
+                        }
+                    }
+                }
+                
+               
                 
                 if !hideDiaryOnTable {
                      StrokeText(text: "So this is where Damon worked...", width: 2, color: .black)
@@ -51,6 +99,10 @@ struct ContentView: View {
                     ParticleEffect(targetSize: CGSize(width: 100, height: 100))
                         .frame(width: 100, height: 100)
                         .offset(x: 225, y: 340)
+                    
+                    ParticleEffect(targetSize: CGSize(width: 450, height: 450))
+                        .frame(width: 450, height: 450)
+                        .offset(x: -70, y: 220)
                 }
                 
                 if !hideDiary {
@@ -58,13 +110,13 @@ struct ContentView: View {
                         .opacity(0.7)
                         .edgesIgnoringSafeArea(.all)
                     
-                    Text((textSwitch ? "" : "This has to be his diary..."))
+                    Text((hideText ? "" : "This has to be his diary..."))
                         .foregroundStyle(.white)
                         .font(.system(size: 42, weight: .bold, design: .serif))
                         .offset(y: -450)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                self.textSwitch.toggle()
+                                self.hideText.toggle()
                             }
                         }
                     
