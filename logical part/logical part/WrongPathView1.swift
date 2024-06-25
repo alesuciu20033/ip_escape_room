@@ -3,20 +3,20 @@ import SwiftUI
 struct WrongPathView1: View {
     var body: some View {
         ZStack {
-           
-            (Color("Background"))
-.edgesIgnoringSafeArea(.all)
+            // Background color covering the entire screen
+            Color("Background")
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
-               
+                // title text that indicates that a clue was found
                 Text("Clue found!")
                     .font(.custom("American Typewriter", size: 46))
                     .fontWeight(.regular)
                     .foregroundColor(Color("Red"))
-
                     .multilineTextAlignment(.center)
                     .padding()
                 
+                // text explaining what was found
                 Text("You unlocked the drawer\nand found a PRESENT!")
                     .font(.custom("American Typewriter", size: 24))
                     .foregroundColor(.white)
@@ -25,6 +25,7 @@ struct WrongPathView1: View {
                 
                 Spacer()
                 
+                // Image of the drawer with an overlay of a present
                 Image("Drawer")
                     .resizable()
                     .scaledToFit()
@@ -40,12 +41,14 @@ struct WrongPathView1: View {
                 
                 Spacer()
                 
-                Text("Open the present and discover the present.")
+                // Instruction text to open the present
+                Text("Open the present and discover the clue.")
                     .font(.custom("American Typewriter", size: 18))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                 
+                // Navigation link to the next view
                 NavigationLink(destination: WrongPathView2()) {
                     Text("Continue")
                         .font(.custom("American Typewriter", size: 24))
@@ -60,7 +63,7 @@ struct WrongPathView1: View {
     }
 }
 
-// Preview
+// Preview 
 struct WrongPathView1_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

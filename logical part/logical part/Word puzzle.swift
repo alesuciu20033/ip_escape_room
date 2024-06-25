@@ -3,6 +3,7 @@ import CoreMotion
 
 struct WordPuzzleView: View {
     
+    // State variables for managing the words, correct letters, and other UI elements
     @State private var words = ["Dia?y", "H?use", "K?ife", "Wa?ch", "Phon?", "Sc?een", "?utton"]
     @State private var correctLetters = ["r", "o", "n", "t", "e", "r", "b"]
     @State private var currentWordIndex: Int? = 0
@@ -13,45 +14,53 @@ struct WordPuzzleView: View {
     @State private var showErrorView: Bool = false
     @State private var hasErrors: Bool = false
     
+    // The alphabet letters that the player can choose from
     let alphabet = Array("abcdefghijklmnopqrstuvwxyz")
     
     var body: some View {
         NavigationStack {
             ZStack {
+                // Background color
                 Color("Background").edgesIgnoringSafeArea(.all)
                 
                 VStack {
+                    
                     Text("Find the hidden word by solving this puzzle!")
-                        .font(.custom("American Typewriter", size: 46))
+                        .font(.custom("American Typewriter", size: 34))
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding()
+                        .padding(.horizontal)
                     
                     HStack {
+                        
                         Divider()
                             .background(Color.white)
                             .frame(width: 2)
                         
                         VStack {
+                            // Loop through each word and display it
                             ForEach(words.indices, id: \.self) { index in
                                 HStack {
                                     if index == currentWordIndex {
+                                        // If the word is the current one, make it tappable to show the picker
                                         formattedWord(words[index])
-                                            .font(.custom("American Typewriter", size: 36))
+                                            .font(.custom("American Typewriter", size: 30))
                                             .foregroundColor(.white)
                                             .onTapGesture {
                                                 showPicker = true
                                             }
                                     } else {
+                                        // Display the word normally
                                         formattedWord(words[index])
-                                            .font(.custom("American Typewriter", size: 36))
+                                            .font(.custom("American Typewriter", size: 30))
                                             .foregroundColor(.white)
                                     }
                                 }
-                                .padding(.vertical, 8)
+                                .padding(.vertical, 4)
                             }
                         }
+                        
                         
                         Divider()
                             .background(Color.white)
@@ -60,13 +69,14 @@ struct WordPuzzleView: View {
                     
                     Spacer()
                     
+                    // Show the letter picker if showPicker is true
                     if showPicker {
                         VStack {
                             Picker("Select Letter", selection: $selectedLetterIndex) {
                                 ForEach(0..<alphabet.count, id: \.self) { index in
                                     Text(String(alphabet[index]))
                                         .foregroundColor(.black)
-                                        .font(.custom("American Typewriter", size: 24))
+                                        .font(.custom("American Typewriter", size: 20))
                                 }
                             }
                             .pickerStyle(WheelPickerStyle())
@@ -75,17 +85,10 @@ struct WordPuzzleView: View {
                             .clipped()
                             .border(Color.white, width: 2)
                             .padding()
-                            
-                            Button("Done") {
-                                applySelectedLetter()
-                                moveToNextWord()
-                                showPicker = false
-                            }
-                            .foregroundColor(.white)
-                            .padding()
                         }
                     }
                     
+                    // Show the 'complete' button if all words are processed
                     if showCompletionButton {
                         Button("Complete") {
                             checkForErrors()
@@ -93,12 +96,15 @@ struct WordPuzzleView: View {
                                 showErrorView = true
                             }
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("Red"))
+                        .font(.custom("American Typewriter", size: 24))
                         .padding()
                         .background(Color("Button"))
                         .cornerRadius(8)
+                        .padding(.bottom, 20)
                     }
                 }
+                .padding()
             }
             .onAppear {
                 startShakeDetection()
@@ -109,6 +115,7 @@ struct WordPuzzleView: View {
         }
     }
     
+    // Function to format the word by highlighting the placeholder character in red
     func formattedWord(_ word: String) -> Text {
         var formatted = Text("")
         for char in word {
@@ -121,6 +128,7 @@ struct WordPuzzleView: View {
         return formatted
     }
 
+    // Start accelerometer updates to detect shaking
     func startShakeDetection() {
         guard motionManager.isAccelerometerAvailable else { return }
         
@@ -131,6 +139,7 @@ struct WordPuzzleView: View {
             let acceleration = data.acceleration
             let magnitude = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
             
+            // If a shake is detected, apply the selected letter and move to the next word
             if magnitude > 2.5 {
                 applySelectedLetter()
                 moveToNextWord()
@@ -138,6 +147,7 @@ struct WordPuzzleView: View {
         }
     }
     
+    // Apply the selected letter to the current word
     func applySelectedLetter() {
         if let index = currentWordIndex {
             let selectedLetter = String(alphabet[selectedLetterIndex])
@@ -149,15 +159,18 @@ struct WordPuzzleView: View {
         }
     }
     
+    // move to the next word in the list or show the completion button if all words are done
     func moveToNextWord() {
         if let currentWordIndex = currentWordIndex, currentWordIndex < words.count - 1 {
             self.currentWordIndex = currentWordIndex + 1
         } else {
             self.currentWordIndex = nil
+            showPicker = false
             showCompletionButton = true
         }
     }
     
+    // check for errors in the completed words
     func checkForErrors() {
         hasErrors = false
         for (index, word) in words.enumerated() {
@@ -174,7 +187,7 @@ struct WordPuzzleView: View {
     }
 }
 
-// Preview
+// Preview 
 struct WordPuzzleView_Previews: PreviewProvider {
     static var previews: some View {
         WordPuzzleView()
