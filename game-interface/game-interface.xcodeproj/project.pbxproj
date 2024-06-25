@@ -13,6 +13,10 @@
 		932791412C27760600BE7AA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932791402C27760600BE7AA1 /* Preview Assets.xcassets */; };
 		9327914A2C27793500BE7AA1 /* EscapeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932791492C27793500BE7AA1 /* EscapeRoomScene.swift */; };
 		9327914C2C27794A00BE7AA1 /* EscapeRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327914B2C27794A00BE7AA1 /* EscapeRoomView.swift */; };
+		9327914E2C29E6EF00BE7AA1 /* EvidenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327914D2C29E6EF00BE7AA1 /* EvidenceView.swift */; };
+		932791502C29E71D00BE7AA1 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327914F2C29E71D00BE7AA1 /* GameScene.swift */; };
+		932791522C29E75400BE7AA1 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932791512C29E75400BE7AA1 /* GameView.swift */; };
+		932791542C29EB0C00BE7AA1 /* Evidence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932791532C29EB0C00BE7AA1 /* Evidence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		932791402C27760600BE7AA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		932791492C27793500BE7AA1 /* EscapeRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapeRoomScene.swift; sourceTree = "<group>"; };
 		9327914B2C27794A00BE7AA1 /* EscapeRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapeRoomView.swift; sourceTree = "<group>"; };
+		9327914D2C29E6EF00BE7AA1 /* EvidenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceView.swift; sourceTree = "<group>"; };
+		9327914F2C29E71D00BE7AA1 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		932791512C29E75400BE7AA1 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		932791532C29EB0C00BE7AA1 /* Evidence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evidence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +63,16 @@
 		932791382C27760500BE7AA1 /* game-interface */ = {
 			isa = PBXGroup;
 			children = (
+				932791532C29EB0C00BE7AA1 /* Evidence.swift */,
+				9327914F2C29E71D00BE7AA1 /* GameScene.swift */,
 				932791492C27793500BE7AA1 /* EscapeRoomScene.swift */,
 				932791392C27760500BE7AA1 /* game_interfaceApp.swift */,
 				9327913B2C27760500BE7AA1 /* ContentView.swift */,
 				9327913D2C27760600BE7AA1 /* Assets.xcassets */,
 				9327913F2C27760600BE7AA1 /* Preview Content */,
 				9327914B2C27794A00BE7AA1 /* EscapeRoomView.swift */,
+				9327914D2C29E6EF00BE7AA1 /* EvidenceView.swift */,
+				932791512C29E75400BE7AA1 /* GameView.swift */,
 			);
 			path = "game-interface";
 			sourceTree = "<group>";
@@ -143,10 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932791502C29E71D00BE7AA1 /* GameScene.swift in Sources */,
 				9327914C2C27794A00BE7AA1 /* EscapeRoomView.swift in Sources */,
 				9327913C2C27760500BE7AA1 /* ContentView.swift in Sources */,
+				9327914E2C29E6EF00BE7AA1 /* EvidenceView.swift in Sources */,
+				932791542C29EB0C00BE7AA1 /* Evidence.swift in Sources */,
 				9327913A2C27760500BE7AA1 /* game_interfaceApp.swift in Sources */,
 				9327914A2C27793500BE7AA1 /* EscapeRoomScene.swift in Sources */,
+				932791522C29E75400BE7AA1 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
