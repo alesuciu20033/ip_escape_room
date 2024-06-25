@@ -8,77 +8,99 @@
 import SwiftUI
 
 struct EvidenceView: View {
-    let evidenceItems = [
-        Evidence(title: "Note 1", content: """
-        Dear Detective,
-
-        This is your first clue. The serial killer you've been chasing is closer than you think. They blend into the crowd, a master of disguise and deception.
-
-        Good luck, and stay vigilant.
-
-        Yours truly,
-        A Concerned Citizen
-        """),
-        Evidence(title: "Note 2", content: """
-        Dear Detective,
-
-        The killer has struck again. This time, they left behind a cryptic message. Pay attention to the patterns.
-
-        Stay safe.
-
-        A Concerned Citizen
-        """)
-    ]
-    
+    @Binding var unlockedEvidence: [Evidence]
+    @Binding var unlockedItems: [Item]
     @Environment(\.presentationMode) var presentationMode
-    @State private var selectedNote: Evidence?
-    
+    @State private var selectedContent: String?
+
     var body: some View {
         VStack {
-            HStack(spacing: 20) {
-                Button(action: {
-                    withAnimation {
-                        selectedNote = evidenceItems[0]
+            Text("Backpack")
+                .font(.largeTitle)
+                .padding()
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    if unlockedEvidence.isEmpty && unlockedItems.isEmpty {
+                        Text("No evidence or items unlocked yet.")
+                            .padding()
+                            .font(.body)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .background(Color.gray.opacity(0.2))
+                    } else {
+                        if !unlockedEvidence.isEmpty {
+                            Text("Notes")
+                                .font(.headline)
+                                .padding(.leading)
+
+                            ForEach(unlockedEvidence) { evidence in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedContent = evidence.content
+                                    }
+                                }) {
+                                    Text(evidence.title)
+                                        .font(.headline)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.green)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                }
+                                .padding([.leading, .trailing])
+                            }
+                        }
+
+                        if !unlockedItems.isEmpty {
+                            Text("Items")
+                                .font(.headline)
+                                .padding(.leading)
+                                .padding(.top)
+
+                            ForEach(unlockedItems) { item in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedContent = item.description
+                                    }
+                                }) {
+                                    Text(item.title)
+                                        .font(.headline)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                }
+                                .padding([.leading, .trailing])
+                            }
+                        }
                     }
-                }) {
-                    Text("Read Note 1")
-                        .font(.largeTitle)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                 }
 
-                Button(action: {
-                    withAnimation {
-                        selectedNote = evidenceItems[1]
+                if let content = selectedContent {
+                    VStack(alignment: .leading) {
+                        Text(content)
+                            .padding()
+                            .font(.body)
+                            .background(Color.white)
+                            .cornerRadius(10)
                     }
-                }) {
-                    Text("Read Note 2")
-                        .font(.largeTitle)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-            }
-            
-            if let note = selectedNote {
-                ScrollView {
-                    Text(note.content)
+                    .background(Color.gray.opacity(0.2))
+                    .transition(.move(edge: .bottom))
+                    .padding()
+                } else {
+                    Spacer()
+                    Text("Select a note or item to read.")
                         .padding()
                         .font(.body)
                         .background(Color.white)
                         .cornerRadius(10)
+                        .background(Color.gray.opacity(0.2))
+                        .padding()
                 }
-                .transition(.move(edge: .bottom))
-                .background(Color.gray.opacity(0.2)) // Ensure consistent background
-            } else {
-                Spacer()
             }
         }
-        .padding()
-        .navigationTitle("Backpack")
         .navigationBarItems(
             leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
@@ -87,6 +109,7 @@ struct EvidenceView: View {
                     .foregroundColor(.blue)
             }
         )
-        .background(Color.gray.opacity(0.2)) // Ensure consistent background
+        .padding()
+        .navigationBarTitle("Backpack", displayMode: .inline)
     }
 }
