@@ -15,6 +15,8 @@
 		132F24302C29AB2000DFBAF1 /* WrongPathView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */; };
 		132F24342C29ABAA00DFBAF1 /* WrongPathView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */; };
 		132F243C2C29C4FA00DFBAF1 /* openbox.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */; };
+		132F243F2C2AE0A000DFBAF1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 132F243E2C2AE0A000DFBAF1 /* Lottie */; };
+		132F24412C2AE0E700DFBAF1 /* magic.json in Resources */ = {isa = PBXBuildFile; fileRef = 132F24402C2AE0E700DFBAF1 /* magic.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView1.swift; sourceTree = "<group>"; };
 		132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView2.swift; sourceTree = "<group>"; };
 		132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openbox.mp3; sourceTree = "<group>"; };
+		132F24402C2AE0E700DFBAF1 /* magic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = magic.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				132F243F2C2AE0A000DFBAF1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +68,7 @@
 				132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */,
 				132F241D2C21A95E00DFBAF1 /* ContentView.swift */,
 				132F24292C21A9C800DFBAF1 /* Word puzzle.swift */,
+				132F24402C2AE0E700DFBAF1 /* magic.json */,
 				132F241F2C21A95F00DFBAF1 /* Assets.xcassets */,
 				132F24212C21A95F00DFBAF1 /* Preview Content */,
 				132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */,
@@ -95,6 +100,9 @@
 			dependencies = (
 			);
 			name = "logical part";
+			packageProductDependencies = (
+				132F243E2C2AE0A000DFBAF1 /* Lottie */,
+			);
 			productName = "logical part";
 			productReference = 132F24182C21A95E00DFBAF1 /* logical part.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +131,9 @@
 				Base,
 			);
 			mainGroup = 132F240F2C21A95E00DFBAF1;
+			packageReferences = (
+				132F243D2C2AE0A000DFBAF1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 132F24192C21A95E00DFBAF1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,6 +151,7 @@
 				132F24232C21A95F00DFBAF1 /* Preview Assets.xcassets in Resources */,
 				132F243C2C29C4FA00DFBAF1 /* openbox.mp3 in Resources */,
 				132F24202C21A95F00DFBAF1 /* Assets.xcassets in Resources */,
+				132F24412C2AE0E700DFBAF1 /* magic.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +374,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		132F243D2C2AE0A000DFBAF1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		132F243E2C2AE0A000DFBAF1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 132F243D2C2AE0A000DFBAF1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 132F24102C21A95E00DFBAF1 /* Project object */;
 }

@@ -1,13 +1,44 @@
 import SwiftUI
 import AVFoundation
+import Lottie
+
+// LottieView to represent Lottie animations in SwiftUI
+struct LottieView: UIViewRepresentable {
+    var name: String
+    var loopMode: LottieLoopMode = .playOnce
+
+    let animationView = LottieAnimationView()
+    
+    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+        let view = UIView(frame: .zero)
+        animationView.animation = LottieAnimation.named(name)
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = loopMode
+        animationView.play()
+        view.addSubview(animationView)
+        
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            animationView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+        
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+    }
+}
 
 struct WrongPathView2: View {
     @State private var offset = CGSize.zero
     @State private var audioPlayer: AVAudioPlayer?
+    @State private var showEffect = false
+    @State private var showNote = false
+    private let audioHelper = AudioPlayerHelper()
 
     var body: some View {
         ZStack {
-            // Background color
             Color("Background")
                 .edgesIgnoringSafeArea(.all)
             
@@ -31,7 +62,6 @@ struct WrongPathView2: View {
                                 self.offset = gesture.translation
                             }
                             .onEnded { _ in
-                                // Play gunshot sound when drag ends
                                 self.playGunshotSound()
                             }
                     )
@@ -44,17 +74,29 @@ struct WrongPathView2: View {
                 
                 Spacer()
                 
-              //  Button(action: {
-                  
-            //    }) {
-                   // Text("go back and try again")
-                      //  .font(.custom("American Typewriter", size: 24))
-                       // .foregroundColor(Color("Red"))
-                      //  .padding()
-                      //  .background(Color("Button"))
-                      //  .cornerRadius(8)
-               // }
-              //  .padding()
+                if showEffect {
+                    LottieView(name: "smokeEffect", loopMode: .playOnce)
+                        .frame(width: 200, height: 200)
+                        .transition(.opacity)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    self.showNote = true
+                                }
+                            }
+                        }
+                }
+                
+                if showNote {
+                    Text("Try again")
+                        .font(.custom("American Typewriter", size: 36))
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(8)
+                        .transition(.opacity)
+                        .animation(.easeInOut, value: showNote)
+                }
             }
         }
         .onAppear {
@@ -66,7 +108,13 @@ struct WrongPathView2: View {
         if let soundURL = Bundle.main.url(forResource: "openbox", withExtension: "mp3") {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.delegate = audioHelper
                 audioPlayer?.prepareToPlay()
+                audioHelper.didFinishPlaying = {
+                    withAnimation {
+                        self.showEffect = true
+                    }
+                }
             } catch {
                 print("Failed to load sound: \(error)")
             }
@@ -75,6 +123,14 @@ struct WrongPathView2: View {
 
     func playGunshotSound() {
         audioPlayer?.play()
+    }
+}
+
+class AudioPlayerHelper: NSObject, AVAudioPlayerDelegate {
+    var didFinishPlaying: (() -> Void)?
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        didFinishPlaying?()
     }
 }
 
