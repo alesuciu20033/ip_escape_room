@@ -99,7 +99,7 @@ struct WrongPathView2: View {
     }
 
     func setupAudioPlayer() {
-        if let soundURL = Bundle.main.url(forResource: "openbox", withExtension: "mp3") {
+        if let soundURL = Bundle.main.url(forResource: "openbox2", withExtension: "mp3") {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
                 audioPlayer?.delegate = audioHelper

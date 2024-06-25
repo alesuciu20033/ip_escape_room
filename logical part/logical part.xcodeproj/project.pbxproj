@@ -18,6 +18,7 @@
 		132F243F2C2AE0A000DFBAF1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 132F243E2C2AE0A000DFBAF1 /* Lottie */; };
 		132F24412C2AE0E700DFBAF1 /* magic.json in Resources */ = {isa = PBXBuildFile; fileRef = 132F24402C2AE0E700DFBAF1 /* magic.json */; };
 		132F24432C2AE8F600DFBAF1 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24422C2AE8F600DFBAF1 /* NoteView.swift */; };
+		132F24452C2AEC8400DFBAF1 /* openbox2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 132F24442C2AEC8400DFBAF1 /* openbox2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openbox.mp3; sourceTree = "<group>"; };
 		132F24402C2AE0E700DFBAF1 /* magic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = magic.json; sourceTree = "<group>"; };
 		132F24422C2AE8F600DFBAF1 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		132F24442C2AEC8400DFBAF1 /* openbox2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openbox2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				132F241B2C21A95E00DFBAF1 /* logical_partApp.swift */,
 				132F242F2C29AB2000DFBAF1 /* WrongPathView1.swift */,
 				132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */,
+				132F24442C2AEC8400DFBAF1 /* openbox2.mp3 */,
 				132F241D2C21A95E00DFBAF1 /* ContentView.swift */,
 				132F24292C21A9C800DFBAF1 /* Word puzzle.swift */,
 				132F24402C2AE0E700DFBAF1 /* magic.json */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				132F24232C21A95F00DFBAF1 /* Preview Assets.xcassets in Resources */,
+				132F24452C2AEC8400DFBAF1 /* openbox2.mp3 in Resources */,
 				132F243C2C29C4FA00DFBAF1 /* openbox.mp3 in Resources */,
 				132F24202C21A95F00DFBAF1 /* Assets.xcassets in Resources */,
 				132F24412C2AE0E700DFBAF1 /* magic.json in Resources */,
