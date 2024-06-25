@@ -2,7 +2,7 @@ import SwiftUI
 import AVFoundation
 import Lottie
 
-// LottieView to represent Lottie animations in SwiftUI
+
 struct LottieView: UIViewRepresentable {
     var name: String
     var loopMode: LottieLoopMode = .playOnce
@@ -34,73 +34,67 @@ struct WrongPathView2: View {
     @State private var offset = CGSize.zero
     @State private var audioPlayer: AVAudioPlayer?
     @State private var showEffect = false
-    @State private var showNote = false
+    @State private var navigateToNote = false
     private let audioHelper = AudioPlayerHelper()
 
     var body: some View {
-        ZStack {
-            Color("Background")
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                Spacer()
+        NavigationStack {
+            ZStack {
+                Color("Background")
+                    .edgesIgnoringSafeArea(.all)
                 
-                Text("Open the box..")
-                    .font(.custom("American Typewriter", size: 36))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Image("present2")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 280, height: 200)
-                    .offset(offset)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { gesture in
-                                self.offset = gesture.translation
-                            }
-                            .onEnded { _ in
-                                self.playGunshotSound()
-                            }
-                    )
-                
-                Text("..and see what is your present")
-                    .font(.custom("American Typewriter", size: 36))
-                    .foregroundColor(Color("White"))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Spacer()
-                
-                if showEffect {
-                    LottieView(name: "smokeEffect", loopMode: .playOnce)
-                        .frame(width: 200, height: 200)
-                        .transition(.opacity)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    self.showNote = true
-                                }
-                            }
-                        }
-                }
-                
-                if showNote {
-                    Text("Try again")
+                VStack {
+                    Spacer()
+                    
+                    Text("Open the box..")
                         .font(.custom("American Typewriter", size: 36))
                         .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
                         .padding()
-                        .background(Color.red)
-                        .cornerRadius(8)
-                        .transition(.opacity)
-                        .animation(.easeInOut, value: showNote)
+                    
+                    Image("present2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 280, height: 200)
+                        .offset(offset)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { gesture in
+                                    self.offset = gesture.translation
+                                }
+                                .onEnded { _ in
+                                    self.playGunshotSound()
+                                }
+                        )
+                    
+                    Text("..and see what is your present")
+                        .font(.custom("American Typewriter", size: 36))
+                        .foregroundColor(Color("White"))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    
+                    Spacer()
+                    
+                    if showEffect {
+                        LottieView(name: "magic", loopMode: .playOnce)
+                            .frame(width: 200, height: 200)
+                            .transition(.opacity)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation {
+                                        self.navigateToNote = true
+                                    }
+                                }
+                            }
+                    }
                 }
             }
-        }
-        .onAppear {
-            self.setupAudioPlayer()
+            .onAppear {
+                self.setupAudioPlayer()
+            }
+            .navigationDestination(isPresented: $navigateToNote) {
+                NoteView()
+            }
         }
     }
 

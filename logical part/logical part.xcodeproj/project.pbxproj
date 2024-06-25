@@ -17,6 +17,7 @@
 		132F243C2C29C4FA00DFBAF1 /* openbox.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */; };
 		132F243F2C2AE0A000DFBAF1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 132F243E2C2AE0A000DFBAF1 /* Lottie */; };
 		132F24412C2AE0E700DFBAF1 /* magic.json in Resources */ = {isa = PBXBuildFile; fileRef = 132F24402C2AE0E700DFBAF1 /* magic.json */; };
+		132F24432C2AE8F600DFBAF1 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132F24422C2AE8F600DFBAF1 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		132F24332C29ABAA00DFBAF1 /* WrongPathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongPathView2.swift; sourceTree = "<group>"; };
 		132F243B2C29C4FA00DFBAF1 /* openbox.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openbox.mp3; sourceTree = "<group>"; };
 		132F24402C2AE0E700DFBAF1 /* magic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = magic.json; sourceTree = "<group>"; };
+		132F24422C2AE8F600DFBAF1 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 		132F240F2C21A95E00DFBAF1 = {
 			isa = PBXGroup;
 			children = (
+				132F24422C2AE8F600DFBAF1 /* NoteView.swift */,
 				132F241A2C21A95E00DFBAF1 /* logical part */,
 				132F24192C21A95E00DFBAF1 /* Products */,
 			);
@@ -164,6 +167,7 @@
 			files = (
 				132F241E2C21A95E00DFBAF1 /* ContentView.swift in Sources */,
 				132F24302C29AB2000DFBAF1 /* WrongPathView1.swift in Sources */,
+				132F24432C2AE8F600DFBAF1 /* NoteView.swift in Sources */,
 				132F241C2C21A95E00DFBAF1 /* logical_partApp.swift in Sources */,
 				132F242A2C21A9C800DFBAF1 /* Word puzzle.swift in Sources */,
 				132F24342C29ABAA00DFBAF1 /* WrongPathView2.swift in Sources */,
