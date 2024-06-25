@@ -12,11 +12,9 @@ class GameScene: SKScene {
         // Load and set the background image
         let backgroundImage = SKSpriteNode(imageNamed: "game_background")
         backgroundImage.position = CGPoint(x: size.width/2, y: size.height/2)
-        backgroundImage.zPosition = -1 // Ensure it's behind other nodes
-        // Scale the image to fit the scene without stretching
+        backgroundImage.zPosition = -1
         backgroundImage.scale(to: CGSize(width: size.width, height: size.height))
         addChild(backgroundImage)
-        //backgroundColor = SKColor.black
 
         let label = SKLabelNode(text: "Escape Room")
         label.fontSize = 45
