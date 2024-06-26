@@ -10,6 +10,12 @@ Initially, we created our individual concepts. Based on the feedback from teache
 
 ## Features
 
+Our main features on which the team worked on were:
+
+ - Developing UI for the story flow & evidence collection
+ - UI for evidence inspection
+ - Mulitple challenges: phone password guessing, word puzzle, finding hidden notes
+ - Interaction with items
 
 ## Branches by team members
 Every single person in our team worked in a separate branch, developing a specific part of the mini-game, based on a previous group task division.
