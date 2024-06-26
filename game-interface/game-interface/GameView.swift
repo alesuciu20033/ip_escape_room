@@ -39,8 +39,8 @@ struct GameView: View {
         Item(title: "Key", description: """
         A small rusty key. It might open a lock somewhere in this escape room.
         """),
-        Item(title: "Map", description: """
-        An old, tattered map showing the layout of the escape room. It might reveal hidden pathways or clues.
+        Item(title: "Phone", description: """
+        nokia lumia 330
         """)
     ]
 
@@ -105,7 +105,7 @@ struct GameView: View {
                             unlockedItems.append(itemData[1])
                         }
                     }) {
-                        Text("Unlock Map")
+                        Text("Unlock Phone")
                             .font(.headline)
                             .padding()
                             .background(Color.blue)
