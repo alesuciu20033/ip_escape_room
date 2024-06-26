@@ -19,6 +19,7 @@ struct ContentView: View {
     @State private var hideBlueprintOnTable = false
     @State private var hideParticles = false
     @State private var hideText = false
+    @State private var blurBackground = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,6 +28,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
+                    .blur(radius: blurBackground ? 5 : 0)
                 
                 if !hideBlueprintOnTable {
                     Image("rolled-blueprint")
@@ -39,13 +41,15 @@ struct ContentView: View {
                                 hideBlueprint = false
                                 hideParticles = true
                                 hideDiaryOnTable = true
+                                hideBlueprintOnTable = true
+                                blurBackground = true
                             }
                         }
                 }
                 
                 if !hideBlueprint {
                     Color.black
-                        .opacity(0.7)
+                        .opacity(0.3)
                         .edgesIgnoringSafeArea(.all)
                     
                     VStack(spacing: 100) {
@@ -68,6 +72,8 @@ struct ContentView: View {
                             hideBlueprint = true
                             hideParticles = false
                             hideDiaryOnTable = false
+                            hideBlueprintOnTable = false
+                            blurBackground = false
                         }
                     }
                 }
@@ -91,6 +97,7 @@ struct ContentView: View {
                                 hideDiary = false
                                 hideDiaryOnTable = true
                                 hideParticles = true
+                                blurBackground = true
                             }
                         }
                 }
@@ -107,7 +114,7 @@ struct ContentView: View {
                 
                 if !hideDiary {
                     Color.black
-                        .opacity(0.7)
+                        .opacity(0.3)
                         .edgesIgnoringSafeArea(.all)
                     
                     Text((hideText ? "" : "This has to be his diary..."))
