@@ -10,14 +10,15 @@ Initially, we created our individual concepts. Based on the feedback from teache
 
 ## Features
 
+
 ## Branches by team members
 Every single person in our team worked in a separate branch, developing a specific part of the mini-game, based on a previous group task division.
 
-- [Nedyalko Tenev](https://github.com/kefche20) - [Nedyalko's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Nedyalko)
-- [Denislav Dimitrov](https://github.com/denislav-d) - [Denislav's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Denislav)
-- [Alexandra Suciu](https://github.com/alesuciu20033) - [Alexandra's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Alexandra1)
-- [Cristina Ciobanu](https://github.com/cristina2400) - [Cristina's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Cristina1)
-- [Okba Abdullah](https://github.com/oAbdull) - [Okba's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Okba)
+- [Nedyalko Tenev](https://github.com/kefche20) - [Nedyalko's Branch - Backpack UI](https://github.com/alesuciu20033/ip_escape_room/tree/Nedyalko)
+- [Denislav Dimitrov](https://github.com/denislav-d) - [Denislav's Branch - Hidden Note in the Diary](https://github.com/alesuciu20033/ip_escape_room/tree/Denislav)
+- [Alexandra Suciu](https://github.com/alesuciu20033) - [Alexandra's Branch - Words Puzzle](https://github.com/alesuciu20033/ip_escape_room/tree/Alexandra1)
+- [Cristina Ciobanu](https://github.com/cristina2400) - [Cristina's Branch - Phone Password Guess](https://github.com/alesuciu20033/ip_escape_room/tree/Cristina1)
+- [Okba Abdullah](https://github.com/oAbdull) - [Okba's Branch - Unlocking the Drawer](https://github.com/alesuciu20033/ip_escape_room/tree/Okba)
 
-## Next steps
-Our next step is to show our progress and final product to the client.
+## Integration
+Our next step is to present our progress and the final product to the client.
