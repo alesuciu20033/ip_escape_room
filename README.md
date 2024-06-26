@@ -20,3 +20,4 @@ Every single person in our team worked in a separate branch, developing a specif
 - [Okba Abdullah](https://github.com/oAbdull) - [Okba's Branch](https://github.com/alesuciu20033/ip_escape_room/tree/Okba)
 
 ## Next steps
+Our next step is to show our progress and final product to the client.
