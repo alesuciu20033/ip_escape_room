@@ -97,6 +97,7 @@ struct ContentView: View {
                                 hideDiary = false
                                 hideDiaryOnTable = true
                                 hideParticles = true
+                                hideBlueprintOnTable = true
                                 blurBackground = true
                             }
                         }
